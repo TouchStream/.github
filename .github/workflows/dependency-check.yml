@@ -1,0 +1,16 @@
+name: Dependency Check
+on: 
+  push:
+    branches: [main, master] # Adjust as needed
+  pull_request:
+
+jobs:
+  dependency-check:
+    name: "Dependency Review" # This becomes the check name
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Run dependency review
+        uses: actions/dependency-review-action@v3
+        with:
+          config-file: '.github/dependency-review-config.yml' # Optional config
